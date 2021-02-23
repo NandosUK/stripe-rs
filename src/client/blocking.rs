@@ -28,8 +28,8 @@ pub struct Client {
 }
 
 impl Client {
-    /// Creates a new client pointed to `https://api.stripe.com/`
-    pub fn new(secret_key: impl Into<String>) -> Client {
+    /// Creates a new client pointed to the passed api_host parameter
+    pub fn new(api_host: impl Into<String> secret_key: impl Into<String>) -> Client {
         Client::from_async(AsyncClient::new(secret_key))
     }
 
