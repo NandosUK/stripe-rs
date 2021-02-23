@@ -43,7 +43,7 @@ pub struct Client {
 }
 
 impl Client {
-    /// Creates a new client pointed to `https://api.stripe.com/`
+    /// Creates a new client pointed to api_host
     pub fn new(api_host: impl Into<String>, secret_key: impl Into<String>) -> Client {
         Client::from_url(api_host, secret_key)
     }

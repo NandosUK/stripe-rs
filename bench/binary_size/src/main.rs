@@ -1,7 +1,14 @@
+use std::env;
+
 fn main() {
     // Create a new client
     let secret_key = std::env::var("STRIPE_SECRET_KEY").expect("Missing STRIPE_SECRET_KEY in env");
-    let api_host = std::env::var("STRIPE_HOST_API").expect("Missing STRIPE_HOST_API in env");
+    let mut api_host = "https://api.stripe.com";
+
+    if let Ok(env_api_host) = env::var("STRIPE_HOST_API") {
+        api_host = env_api_host;
+    }
+
     let client = stripe::Client::new(api_host, secret_key);
 
     #[cfg(feature = "blocking")]
